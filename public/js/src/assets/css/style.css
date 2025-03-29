@@ -1,0 +1,1407 @@
+@font-face {
+  font-family: 'Poppins';
+  src: url('./font/poppins-v22-latin-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./font/poppins-v22-latin-300.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./font/poppins-v22-latin-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Apply Poppins font to all elements */
+* {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+body {
+  background-color: #f5f5f5;
+}
+
+/* App Layout Structure */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+input,
+select,
+textarea,
+button {
+  outline: none;
+  border: 1px solid #ddd;
+  transition: border-color 0.3s ease;
+  min-height: 45px;
+}
+
+/* Custom focus styles */
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #007bff;
+  /* Your primary color */
+  box-shadow: 0 0 0 2px rgb(0 123 255 / 10%);
+  /* Optional: adds a subtle glow */
+}
+
+/* Optional: Add a subtle hover effect */
+input:hover,
+select:hover {
+  border-color: #0056b3;
+  /* Slightly darker than focus color */
+}
+
+/* Sidebar Styles */
+.app-sidebar {
+  width: 240px;
+  min-height: 100vh;
+  background-color: white;
+  border-right: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.app-sidebar .logo-area {
+  padding: 15px 20px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-sidebar .logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.app-sidebar .logo img {
+  max-width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.app-sidebar .logo div {
+  font-weight: bold;
+  color: #3366cc;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.sidebar-nav {
+  flex-grow: 1;
+  padding: 20px 0;
+}
+
+.sidebar-nav ul,
+.support-settings-area ul {
+  list-style: none;
+  padding: 0 15px;
+}
+
+.sidebar-nav ul li,
+.support-settings-area ul li {
+  margin-bottom: 5px;
+}
+
+.sidebar-nav ul li a,
+.support-settings-area ul li a {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  color: #666;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  border-radius: 6px;
+}
+
+.sidebar-nav ul li a:hover,
+.support-settings-area ul li a:hover {
+  background-color: #f5f5f5;
+  color: #3366cc;
+}
+
+.sidebar-nav ul li.active a,
+.support-settings-area ul li.active a {
+  background-color: #e6f0ff;
+  color: #3366cc;
+  border-left: 3px solid #3366cc;
+  font-weight: 500;
+}
+
+.sidebar-nav ul li a svg,
+.support-settings-area ul li a svg {
+  margin-right: 12px;
+  color: #888;
+}
+
+.sidebar-nav ul li.active a svg,
+.support-settings-area ul li.active a svg {
+  color: #3366cc;
+}
+
+.sidebar-nav ul li a span,
+.support-settings-area ul li a span {
+  flex-grow: 1;
+}
+
+.support-settings-area {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid #eaeaea;
+}
+
+/* Remove focus outline but maintain accessibility */
+.sidebar-nav ul li a:focus,
+.support-settings-area ul li a:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(51, 102, 204, 0.3);
+}
+
+/* For browsers that don't support :focus-visible yet */
+.sidebar-nav ul li a:focus:not(:focus-visible),
+.support-settings-area ul li a:focus:not(:focus-visible) {
+  box-shadow: none;
+}
+
+/* Only show the focus style for keyboard focus */
+.sidebar-nav ul li a:focus-visible,
+.support-settings-area ul li a:focus-visible {
+  box-shadow: 0 0 0 2px rgba(51, 102, 204, 0.3);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .app-sidebar {
+    width: 100%;
+    min-height: auto;
+  }
+
+  .sidebar-nav ul,
+  .support-settings-area ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .sidebar-nav ul li,
+  .support-settings-area ul li {
+    margin: 5px;
+  }
+}
+
+/* Content Area Styles */
+.content-area {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f9f9;
+}
+
+/* Header Styles */
+.app-header {
+  background-color: white;
+  height: 70px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.app-header h1 {
+  font-size: 22px;
+  font-weight: 500;
+  color: #333;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Header icon styles */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.notification-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #666;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.notification-icon:hover {
+  background-color: #f0f0f0;
+  color: #3366cc;
+}
+
+/* Badge for notifications */
+.notification-icon .badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #ff4d4f;
+  color: white;
+  font-size: 10px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+}
+
+/* User profile dropdown styling */
+.user-profile-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  position: relative;
+  padding: 6px 10px;
+  border-radius: 20px;
+  transition: background-color 0.2s ease;
+}
+
+.user-profile-dropdown:hover {
+  background-color: #f0f0f0;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  overflow: hidden;
+}
+
+.user-profile-dropdown span {
+  font-weight: 500;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Improved dropdown styling */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 45px;
+  background-color: white;
+  min-width: 180px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.dropdown-content ul {
+  list-style: none;
+}
+
+.dropdown-content ul li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.dropdown-content ul li a:hover {
+  background-color: #f5f5f5;
+  color: #3366cc;
+}
+
+.user-profile-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Main Content Area */
+.main-content {
+  padding: 30px;
+  height: calc(100vh - 70px);
+  flex-grow: 1;
+  overflow-y: scroll;
+}
+
+/* Logo Styling */
+.logo-area .logo {
+  display: flex;
+  align-items: center;
+}
+
+/* Scholarship specific logo */
+.app-sidebar .logo-area .logo {
+  font-weight: bold;
+  color: #3366cc;
+  font-size: 18px;
+}
+
+/* Additional Styles for the logo in sidebar */
+.app-sidebar .logo-area {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 25px;
+}
+
+/* Style for the eagle logo shown in the image */
+.app-sidebar .logo img {
+  max-width: 145px;
+  height: auto;
+}
+
+/* User dropdown styling */
+.user-profile-dropdown {
+  display: flex;
+  align-items: center;
+}
+
+.user-profile-dropdown span {
+  margin-left: 5px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Make icons and indicators more visible */
+.notification-icon {
+  position: relative;
+}
+
+.notification-icon .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #ff4d4f;
+  color: white;
+  font-size: 10px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Page specific styles */
+.page-title {
+  font-size: 24px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .app-layout {
+    flex-direction: column;
+  }
+
+  .app-sidebar {
+    width: 100%;
+    height: auto;
+  }
+
+  .content-area {
+    width: 100%;
+  }
+}
+
+
+
+/* ... (Rest of your existing CSS for .login-page and .registration-page forms) ... */
+/* MyApplications.css */
+.my-applications-page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  max-width: 100%;
+  padding: 24px;
+  color: #333;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.05);
+}
+
+.my-applications-page h2 {
+  font-size: 20px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #333;
+}
+
+.my-applications-page p {
+  color: #777;
+  margin-top: 0;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.info-message {
+  background-color: #f1f2fe;
+  border-left: 4px solid #023E84;
+  padding: 14px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  color: #555;
+  font-size: 14px;
+}
+
+
+.success-message {
+  background-color: #edf0ec;
+  border-left: 4px solid #21CF98;
+  padding: 14px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  color: #555;
+  font-size: 14px;
+}
+
+.error-message {
+  background-color: #fef1f1;
+  border-left: 4px solid #e74c3c;
+  padding: 14px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  color: #555;
+  font-size: 14px;
+}
+
+.info-circle-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: #e74c3c;
+  border-radius: 50%;
+  margin-right: 12px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.info-circle-icon::after {
+  content: "!";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.info-message a {
+  color: #2964e5;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.info-message a:hover {
+  text-decoration: underline;
+}
+
+.filters {
+  margin-bottom: 20px;
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+
+.filter-row select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  min-width: 200px;
+  background-color: white;
+  font-size: 14px;
+  color: #333;
+}
+
+.error-message {
+  color: #e74c3c;
+  background-color: #fef1f1;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+/* ApplicationTable.css */
+.application-table {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.application-table table {
+  width: 100%;
+  border-collapse: separate;
+  /* Ensure border-radius works */
+  border-spacing: 0;
+  border: none;
+}
+
+.application-table th {
+  background-color: #f8f9fa;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 500;
+  border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
+  color: #666;
+  font-size: 14px;
+}
+
+.application-table th:hover {
+  background-color: #f1f3f4;
+}
+
+/* Apply border-radius to the first row's first and last th elements */
+.application-table thead {
+  background-color: lightgray;
+}
+
+.application-table thead tr:first-child th:first-child {
+  border-top-left-radius: 10px;
+}
+
+.application-table thead tr:first-child th:last-child {
+  border-top-right-radius: 10px;
+}
+
+.application-table td {
+  padding: 18px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  vertical-align: middle;
+  color: #333;
+  font-size: 14px;
+}
+
+.alert-circle {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-color: #e74c3c;
+  border-radius: 50%;
+  margin-right: 8px;
+  position: relative;
+  top: 3px;
+}
+
+.alert-circle::after {
+  content: "!";
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.status-tag {
+  display: inline-block;
+  background-color: #fdf3d8;
+  color: #937f38;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.application-alert {
+  display: flex;
+  align-items: center;
+  color: #e74c3c;
+  font-weight: 500;
+}
+
+.btn-edit {
+  background-color: #0D6890;
+  /* Primary color */
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-edit:hover {
+  background-color: #0a5675;
+  /* Slightly darker on hover */
+}
+
+.btn-delete {
+  background-color: #d9534f;
+  /* Red color for delete */
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-delete:hover {
+  background-color: #c9302c;
+  /* Slightly darker on hover */
+}
+
+
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e8f0fe;
+  color: #1967d2;
+  font-weight: 500;
+  padding: 6px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  font-size: 14px;
+}
+
+.download-btn:hover {
+  background-color: #d2e3fc;
+}
+
+.download-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231967d2'%3E%3Cpath d='M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z'/%3E%3C/svg%3E");
+  background-size: cover;
+  margin-left: 8px;
+}
+
+/* Scholarships Page Styling */
+.scholarships-page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  max-width: 100%;
+  padding: 24px;
+  color: #333;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.05);
+}
+
+.scholarships-page h2 {
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* Degree Level Filter Styling */
+.degree-level-filters {
+  display: flex;
+  gap: 0;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.degree-level-filter-button {
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  position: relative;
+}
+
+.degree-level-filter-button.active {
+  color: #1e40af;
+  font-weight: 600;
+}
+
+.degree-level-filter-button.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #1e40af;
+}
+
+.degree-level-filter-button:hover:not(.active) {
+  color: #4b5563;
+}
+
+/* Error and Loading States */
+.error-message {
+  color: #ef4444;
+  padding: 12px;
+  margin-bottom: 16px;
+  background-color: #fee2e2;
+  border-radius: 6px;
+}
+
+/* Scholarship List */
+.scholarship-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+/* ScholarshipCard Component Styling */
+.scholarship-card {
+  background-color: #f9fafb;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-header {
+  padding: 20px;
+  padding-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-header h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.funding-badge {
+  background-color: #fef3c7;
+  color: #92400e;
+  padding: 4px 8px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  width: fit-content;
+}
+
+.card-body {
+  padding: 0 20px 20px;
+  flex-grow: 1;
+}
+
+.description {
+  color: #4b5563;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  align-items: center;
+}
+
+.intake {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #e0f2fe;
+  color: #0369a1;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.deadline {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.eligibility {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #1e40af;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.card-footer {
+  padding: 0 20px 20px;
+}
+
+.apply-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #6bab64;
+  color: white;
+  text-align: center;
+  padding: 12px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.apply-button:hover {
+  background-color: #5a9255;
+}
+
+/* Icons styling */
+.fas.fa-calendar,
+.fas.fa-info-circle {
+  font-size: 14px;
+}
+
+/* Additional styles for the icons in the card */
+.scholarship-card .fas.fa-info-circle {
+  color: #1e40af;
+}
+
+/* Additional style for the scholarship icon */
+.scholarship-card .card-header::after {
+  content: "";
+  position: absolute;
+  right: 20px;
+  width: 24px;
+  height: 24px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231e40af'%3E%3Cpath d='M12 14l9-5-9-5-9 5 9 5z'%3E%3C/path%3E%3Cpath d='M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z'%3E%3C/path%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/*--------------------------------*/
+
+/* General Page Styling */
+.my-background-page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  max-width: 100%;
+  color: #333;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.05);
+}
+
+.my-background-page h2 {
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* Tabs Component Styling */
+.tabs-component {
+  width: 100%;
+}
+
+.tabs-header {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid #e0e0e0;
+  white-space: nowrap;
+}
+
+.tab-item {
+  padding: 15px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #667085;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tab-item svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2px;
+}
+
+.tab-item.active {
+  color: #023E84;
+  font-weight: 500;
+}
+
+.tab-item.active svg {
+  stroke: #023E84;
+}
+
+.tab-item.active:after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #023E84;
+}
+
+.tabs-content {
+  padding: 24px;
+}
+
+/* Form Styling */
+.form-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.form-upload-section {
+  border-radius: 8px;
+  border: 1px dashed #D7D7D7;
+  padding: 25px;
+  margin-bottom: 30px;
+}
+
+.form-description {
+  color: #64748B;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* Form Fields */
+.section-header p {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.section-header small {
+  font-size: 13px;
+  color: #858585;
+}
+
+.section-header {
+  padding: 15px;
+  background-color: #F9F9F9;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.form-actions button {
+  display: flex;
+  padding: 12px 15px;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  border-radius: 6px;
+  background: #21CF98;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+
+.form-actions {
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #474747;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #dedede;
+  border-radius: 6px;
+  font-size: 14px !important;
+  font-weight: 300 !important;
+  color: #464646 !important;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.form-group .input-error {
+  border: 1px solid #e74c3c !important; /* Red border */
+}
+
+.form-group {
+    position: relative; /* To position the icon */
+}
+
+.form-group .error-icon {
+  position: absolute;
+  top: 52%;
+  right: 12px;
+  transform: translateY(-50%);
+  color: #e74c3c;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+/* Style the Feather Icon within the error-icon span */
+.form-group .error-icon svg {
+    width: 1.2em;  /* Adjust size as needed */
+    height: 1.2em;
+}
+
+input:hover {
+  border: 1px solid #173f87;
+}
+
+select:hover {
+  border: 1px solid #173f87;
+}
+.form-group input::placeholder {
+  color: #9CA3AF;
+}
+
+.form-group .input-with-icon {
+  position: relative;
+}
+
+.form-group .input-with-icon input {
+  padding-right: 40px;
+}
+
+.form-group .input-with-icon .icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6B7280;
+}
+
+.form-group {
+  width: 100%;
+  flex: 1;
+}
+
+/* Social Media Icons */
+.linkedin-icon svg {
+  stroke: #0077B5;
+  fill: #0077B5;
+}
+
+.facebook-icon svg {
+  stroke: #1877F2;
+  fill: #1877F2;
+}
+
+.instagram-icon svg {
+  stroke: #E4405F;
+  fill: #E4405F;
+}
+
+/* Select Dropdown Styling */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+}
+
+/* Contact Form Specific Styling */
+.contact-information,
+.residential-address {
+  background-color: #F9FAFB;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.section-description {
+  color: #64748B;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* Save Button */
+.save-button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-save {
+  background-color: #10B981;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-save:hover {
+  background-color: #059669;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .form-group {
+    flex: 0 0 100%;
+  }
+
+  .tabs-header {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .tab-item {
+    white-space: nowrap;
+  }
+}
+
+/* Number input arrows styling */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.checkbox-group input {
+  width: auto;
+}
+
+.checkbox-group {
+  display: flex;
+  gap: 5px;
+}
+
+
+/* Loading Styling */
+.loading {
+  text-align: center;
+  padding: 40px 0;
+  color: #6B7280;
+}
+
+
+/*---------------- UPLOAD COMPONENT -----------------*/
+/* DocumentUpload.css */
+.document-upload {
+  width: 100%;
+  max-width: 200px;
+  font-family: Arial, sans-serif;
+}
+
+.document-container {
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.upload-button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #cce0ff;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 15px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.upload-icon {
+  background-color: #0c3b87;
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-text {
+  font-size: 16px;
+  color: #0c3b87;
+  font-weight: 300;
+}
+
+.hidden-input {
+  display: none;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #e9e9e9;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: white;
+}
+
+.file-name {
+  font-size: 18px;
+  color: #333;
+  font-weight: 500;
+}
+
+.file-actions {
+  display: flex;
+  align-items: center;
+}
+
+.file-size {
+  font-size: 10px;
+  color: #a0a0a0;
+  margin-right: 16px;
+}
+
+.download-button {
+  background: #e9e9ff;
+  border-radius: 50%;
+  border: none;
+  color: #0c3b87;
+  cursor: pointer;
+  padding: 5px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clear-button {
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.no-file {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.no-file i {
+  font-size: 14px;
+}
+
+.no-file span {
+  font-size: 16px;
+  color: #cccccc;
+  font-style: italic;
+  font-weight: 200;
+}
+.info-text {
+  font-size: 14px;
+  color: #666;
+  margin-top: 5px;
+}
